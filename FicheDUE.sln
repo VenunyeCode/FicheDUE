@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FicheDUE", "FicheDUE\FicheD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FicheUEAuthApi", "..\FicheUEAuthApi\FicheUEApi\FicheUEAuthApi.csproj", "{A772B53C-A3F2-48DE-B3A7-C761F0AEAE15}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FicheUEApiGestion", "..\FicheUEApiGestion\FicheUEApiGestion\FicheUEApiGestion.csproj", "{0D195DF7-23C1-44C2-897F-B7858169D77A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A772B53C-A3F2-48DE-B3A7-C761F0AEAE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A772B53C-A3F2-48DE-B3A7-C761F0AEAE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A772B53C-A3F2-48DE-B3A7-C761F0AEAE15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D195DF7-23C1-44C2-897F-B7858169D77A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D195DF7-23C1-44C2-897F-B7858169D77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D195DF7-23C1-44C2-897F-B7858169D77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D195DF7-23C1-44C2-897F-B7858169D77A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 ﻿@{
 }
+@using FicheDUE.Models;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
@@ -294,46 +295,19 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td>SOGBO Kokou Venunye Bernard</td>
-												@*<td class="d-none d-md-table-cell text-fade">Jun 21, 1961</td>*@
-												<td class="table-action min-w-100">
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="edit-2"></i></a>
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="trash"></i></a>
-												</td>
-											</tr>
-											<tr>
-												<td>ATTIOGBE Godwin</td>
-												<td class="table-action">
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="edit-2"></i></a>
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="trash"></i></a>
-												</td>
-											</tr>
-											<tr>
-												<td>SOGBO Kokouvi Prosper</td>
-												@*<td class="d-none d-md-table-cell text-fade">Sep 14, 1965</td>*@
-												<td class="table-action">
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="edit-2"></i></a>
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="trash"></i></a>
-												</td>
-											</tr>
-											<tr>
-												<td>ATTIOGBE Amédomé Follyvi</td>
-												@*<td class="d-none d-md-table-cell text-fade">Apr 2, 1971</td>*@
-												<td class="table-action">
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="edit-2"></i></a>
-													<a href="#" class="text-fade hover-primary"><i class="align-middle" data-feather="trash"></i></a>
-												</td>
-											</tr>
-											<tr>
-												<td>SOGBO Comlan Théodore</td>
-												@*<td class="d-none d-md-table-cell text-fade">Oct 12, 1966</td>*@
-												<td class="table-action">
-													<form>
-														<input type="hidden" id="libelleId" value="SOGBO" name="nomProf" />
-													</form>
-													<a asp-action="UpdateProf" asp-asp-controller="Admin" class="text-fade hover-primary" ><i class="align-middle" data-feather="edit-2"></i></a>
-													<a asp-action="DeleteProf" asp-controller="Admin" class="text-fade hover-primary" value=""><i class="align-middle" data-feather="trash"></i></a>
-												</td>
+												@foreach (var item in (List<Enseignant>) ViewBag["enseignants"])
+												{
+													<td>@item.Nom + " " + @item.Prenoms</td>
+													<td class="table-action min-w-100">
+														<a href="#" class="text-fade hover-primary" asp-action="UpdateProf" asp-controller="Admin"><i class="align-middle" data-feather="edit-2"></i></a>
+														<a href="#" class="text-fade hover-primary" asp-action="DeleteProf" asp-controller="Admin"><i class="align-middle" data-feather="trash"></i></a>
+														<form>
+															<input type="hidden" id="idProf" value="@item.Id" name="idProf"/>
+															<input type="hidden" id="nomprof" value="@item.Nom" name="nomProf"/>
+															<input type="hidden" id="prenomProf" value="@item.Prenoms" name="prenomProf"/>
+														</form>
+													</td>
+												}	
 											</tr>
 										</tbody>
 									</table>
