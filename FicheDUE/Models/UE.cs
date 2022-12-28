@@ -10,5 +10,12 @@
 		public List<Cours> Cours { get; set; } = new();
 
 		public float NoteUE { get; set; }
+
+		public UE(string codeUE, string nomUE, float noteUE)
+		{
+			CodeUE = codeUE;
+			NomUE = nomUE;
+			NoteUE = noteUE;
+		}
 	}
 }

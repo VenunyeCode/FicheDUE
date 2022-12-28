@@ -1,6 +1,7 @@
 ﻿using FicheDUE.Constants;
 using FicheDUE.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 namespace FicheDUE.Controllers
 {
@@ -34,6 +35,7 @@ namespace FicheDUE.Controllers
 			return View();
 		}
 
+		[HttpGet]
 		public IActionResult Encodage()
 		{
 			return View();
@@ -47,10 +49,40 @@ namespace FicheDUE.Controllers
 
 			if (response.IsSuccessStatusCode)
 			{
-				var value = response.Content.ReadFromJsonAsync<List<Enseignant>>();
-				ViewBag["enseignants"] = value;
+				var value = await(response.Content.ReadFromJsonAsync<IEnumerable<Enseignant>>());
+				ViewBag.enseignants = value;
 			}
 			return View();
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> UE() //Vue Liste des UE
+		{
+			var url = "https://localhost:7274/api/FicheUEGestion/FicheUEApiGestion/UE";
+			var response = Client.GetAsync(url).Result;
+
+			if (response.IsSuccessStatusCode)
+			{
+				ViewBag.UEs = (await response.Content.
+					ReadFromJsonAsync<IEnumerable<UE>>());
+			}
+			return View();
+		}
+
+		public IActionResult UEAddForm()
+		{
+			return View();
+		}
+
+		public async Task<ActionResult> UEAddAction()
+		{
+			var code = Request.Form["codeUE"].ToString();
+			var nom = Request.Form["nomUE"].ToString();
+			var note = float.Parse(Request.Form["note"].ToString());
+			var url = "https://localhost:7274/api/FicheUEGestion/FicheUEApiGestion/UE/Add";
+			var Ue = new UE(code, nom, note);
+
+			var response = Client.PostAsync(url, new StringContent(JsonConvert.);
 		}
 
 		[HttpGet]
